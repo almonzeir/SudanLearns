@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -32,7 +33,7 @@ export default function HeroSection() {
         objectFit="cover"
         quality={80}
         className="z-0 filter brightness-50"
-        data-ai-hint="student laptop rural"
+        data-ai-hint="student laptop"
         priority
       />
       <div className="relative z-10 p-4 sm:p-8 flex flex-col items-center">

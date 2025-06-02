@@ -1,3 +1,4 @@
+
 "use client";
 
 import { PageWrapper } from '@/components/ui/page-wrapper';
@@ -7,6 +8,7 @@ import BadgeItem from './badge-item';
 import DynamicQuoteDisplay from './dynamic-quote-display';
 import { BookOpen, Calculator, FlaskConical, Globe, ScrollText, Lightbulb, Rocket, Award, Sparkles, Bot } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Image from 'next/image';
 
 const subjects = [
   { title: 'Mathematics', icon: Calculator, colorClass: 'text-blue-500', href: '/exercises#quizzes', progress: 75 },
@@ -65,14 +67,22 @@ export default function StudentDashboardClient() {
         </section>
 
         <section>
-          <Card className="bg-secondary/50">
-            <CardHeader>
-              <CardTitle className="font-headline flex items-center">
-                <Bot className="mr-2 h-6 w-6 text-primary"/>
+          <Card className="bg-secondary/50 flex flex-col items-center text-center p-6 hover:shadow-lg transition-shadow">
+            <CardHeader className="p-2 items-center">
+              <CardTitle className="font-headline flex items-center text-2xl">
+                <Bot className="mr-3 h-8 w-8 text-primary"/>
                 Study Helper
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex flex-col items-center">
+              <Image
+                src="https://placehold.co/150x150.png"
+                alt="Study Helper Mascot"
+                width={100}
+                height={100}
+                className="rounded-full mb-4 shadow-md border-2 border-primary"
+                data-ai-hint="friendly robot"
+              />
               <p className="text-muted-foreground">Need help or have a question? Our AI mascot is here to assist you! (Feature coming soon)</p>
             </CardContent>
           </Card>
