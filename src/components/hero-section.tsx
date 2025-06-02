@@ -27,13 +27,12 @@ export default function HeroSection() {
   return (
     <div className="relative h-[calc(100vh-4rem)] min-h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
       <Image
-        src="https://placehold.co/1920x1080.png"
-        alt="Smiling student opening a laptop in a village"
+        src="https://wsuwp-uploads.s3.amazonaws.com/uploads/sites/90/2015/08/EDUCATION-text.jpg"
+        alt="Abstract image with the word EDUCATION"
         layout="fill"
         objectFit="cover"
         quality={80}
         className="z-0 filter brightness-50"
-        data-ai-hint="student laptop"
         priority
       />
       <div className="relative z-10 p-4 sm:p-8 flex flex-col items-center">
