@@ -7,7 +7,8 @@ import VideoCard from './video-card';
 import VideoPlayerModal from './video-player-modal';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Search, Filter } from 'lucide-react';
 
 const videos = [
   { id: '1', title: 'Introduction to Algebra', subject: 'Mathematics', grade: 'Primary', duration: '12:34', youtubeVideoId: 'NybHckSEQBI', colorCodeClass: 'bg-yellow-400' },
@@ -50,44 +51,52 @@ export default function VideoLibraryClient() {
         <p className="text-lg text-muted-foreground">Explore our collection of educational videos.</p>
       </div>
 
-      <div className="mb-8 p-6 bg-card border rounded-lg shadow-sm">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-          <div className="relative">
-            <label htmlFor="search" className="block text-sm font-medium text-foreground mb-1">Search Videos</label>
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground h-5 w-5 mt-3" />
-            <Input
-              id="search"
-              type="text"
-              placeholder="Search by title or subject..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
+      <Card className="mb-10 shadow-lg">
+        <CardHeader>
+          <CardTitle className="flex items-center text-xl font-headline">
+            <Filter className="mr-2 h-5 w-5 text-primary" />
+            Filter & Search Videos
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+            <div className="relative">
+              <label htmlFor="search" className="block text-sm font-medium text-foreground mb-1">Search by Title/Subject</label>
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-muted-foreground h-5 w-5 mt-3" />
+              <Input
+                id="search"
+                type="text"
+                placeholder="e.g., Algebra, Solar System..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+            <div>
+              <label htmlFor="grade-filter" className="block text-sm font-medium text-foreground mb-1">Filter by Grade</label>
+              <Select value={selectedGrade} onValueChange={setSelectedGrade}>
+                <SelectTrigger id="grade-filter">
+                  <SelectValue placeholder="Select Grade Level" />
+                </SelectTrigger>
+                <SelectContent>
+                  {grades.map(grade => <SelectItem key={grade} value={grade}>{grade}</SelectItem>)}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <label htmlFor="subject-filter" className="block text-sm font-medium text-foreground mb-1">Filter by Subject</label>
+              <Select value={selectedSubject} onValueChange={setSelectedSubject}>
+                <SelectTrigger id="subject-filter">
+                  <SelectValue placeholder="Select Subject" />
+                </SelectTrigger>
+                <SelectContent>
+                  {subjects.map(subject => <SelectItem key={subject} value={subject}>{subject}</SelectItem>)}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
-          <div>
-            <label htmlFor="grade-filter" className="block text-sm font-medium text-foreground mb-1">Filter by Grade</label>
-            <Select value={selectedGrade} onValueChange={setSelectedGrade}>
-              <SelectTrigger id="grade-filter">
-                <SelectValue placeholder="Filter by Grade" />
-              </SelectTrigger>
-              <SelectContent>
-                {grades.map(grade => <SelectItem key={grade} value={grade}>{grade}</SelectItem>)}
-              </SelectContent>
-            </Select>
-          </div>
-          <div>
-            <label htmlFor="subject-filter" className="block text-sm font-medium text-foreground mb-1">Filter by Subject</label>
-            <Select value={selectedSubject} onValueChange={setSelectedSubject}>
-              <SelectTrigger id="subject-filter">
-                <SelectValue placeholder="Filter by Subject" />
-              </SelectTrigger>
-              <SelectContent>
-                {subjects.map(subject => <SelectItem key={subject} value={subject}>{subject}</SelectItem>)}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
       {filteredVideos.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -101,7 +110,7 @@ export default function VideoLibraryClient() {
         </div>
       ) : (
         <div className="text-center py-12">
-          <p className="text-xl text-muted-foreground">No videos found matching your criteria.</p>
+          <p className="text-xl text-muted-foreground">No videos found matching your criteria. Try adjusting your filters!</p>
         </div>
       )}
 
