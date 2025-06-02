@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -7,15 +8,20 @@ interface VideoCardProps {
   title: string;
   subject: string;
   grade: string;
-  thumbnailUrl: string;
-  thumbnailHint: string;
+  youtubeVideoId: string;
   duration: string;
   colorCodeClass?: string; // e.g. bg-yellow-500
+  onPlay: (videoId: string, title: string) => void;
 }
 
-export default function VideoCard({ title, subject, grade, thumbnailUrl, thumbnailHint, duration, colorCodeClass = 'bg-primary' }: VideoCardProps) {
+export default function VideoCard({ title, subject, grade, youtubeVideoId, duration, colorCodeClass = 'bg-primary', onPlay }: VideoCardProps) {
+  const thumbnailUrl = `https://img.youtube.com/vi/${youtubeVideoId}/hqdefault.jpg`;
+
   return (
-    <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+    <Card 
+      className="overflow-hidden hover:shadow-xl transition-shadow duration-300 group cursor-pointer"
+      onClick={() => onPlay(youtubeVideoId, title)}
+    >
       <CardHeader className="p-0 relative">
         <Image
           src={thumbnailUrl}
@@ -23,7 +29,6 @@ export default function VideoCard({ title, subject, grade, thumbnailUrl, thumbna
           width={400}
           height={225}
           className="w-full h-auto object-cover aspect-video transition-transform duration-300 group-hover:scale-105"
-          data-ai-hint={thumbnailHint}
         />
         <div className={`absolute top-2 left-2 px-2 py-1 text-xs font-semibold rounded ${colorCodeClass} text-primary-foreground`}>
           {grade}
@@ -38,7 +43,6 @@ export default function VideoCard({ title, subject, grade, thumbnailUrl, thumbna
       </CardContent>
       <CardFooter className="p-4 pt-0 flex justify-between items-center">
         <Badge variant="secondary">{duration}</Badge>
-        {/* Placeholder for views or other metadata */}
       </CardFooter>
     </Card>
   );

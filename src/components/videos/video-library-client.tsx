@@ -4,19 +4,20 @@
 import { useState } from 'react';
 import { PageWrapper } from '@/components/ui/page-wrapper';
 import VideoCard from './video-card';
+import VideoPlayerModal from './video-player-modal';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 
 const videos = [
-  { id: '1', title: 'Introduction to Algebra', subject: 'Mathematics', grade: 'Primary', duration: '12:34', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "algebra lesson", colorCodeClass: 'bg-yellow-400' },
-  { id: '2', title: 'The Solar System', subject: 'Science', grade: 'Primary', duration: '15:02', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "space planets", colorCodeClass: 'bg-yellow-400' },
-  { id: '3', title: 'Advanced Calculus Concepts', subject: 'Mathematics', grade: 'Secondary', duration: '25:10', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "math equations", colorCodeClass: 'bg-blue-400' },
-  { id: '4', title: 'Photosynthesis Explained', subject: 'Science', grade: 'Secondary', duration: '18:55', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "botany science", colorCodeClass: 'bg-blue-400' },
-  { id: '5', title: 'Shakespearean Sonnets', subject: 'English', grade: 'Secondary', duration: '22:00', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "literature classic", colorCodeClass: 'bg-blue-400' },
-  { id: '6', title: 'Basic Grammar Rules', subject: 'English', grade: 'Primary', duration: '10:15', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "writing grammar", colorCodeClass: 'bg-yellow-400' },
-  { id: '7', title: 'World War II Overview', subject: 'History', grade: 'Secondary', duration: '30:00', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "history war", colorCodeClass: 'bg-blue-400' },
-  { id: '8', title: 'Ancient Civilizations', subject: 'History', grade: 'Primary', duration: '14:30', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "ancient egypt", colorCodeClass: 'bg-yellow-400' },
+  { id: '1', title: 'Introduction to Algebra', subject: 'Mathematics', grade: 'Primary', duration: '12:34', youtubeVideoId: 'NybHckSEQBI', colorCodeClass: 'bg-yellow-400' },
+  { id: '2', title: 'The Solar System - Fun Facts for Kids', subject: 'Science', grade: 'Primary', duration: '15:02', youtubeVideoId: 'libKVRa01L8', colorCodeClass: 'bg-yellow-400' },
+  { id: '3', title: 'Calculus 1 - Full College Course', subject: 'Mathematics', grade: 'Secondary', duration: '25:10', youtubeVideoId: 'WUvTyaaNkzM', colorCodeClass: 'bg-blue-400' },
+  { id: '4', title: 'Photosynthesis: Crash Course Biology #8', subject: 'Science', grade: 'Secondary', duration: '18:55', youtubeVideoId: 'uixA8ZXx0KU', colorCodeClass: 'bg-blue-400' },
+  { id: '5', title: 'Why Shakespeare Loved Iambic Pentameter', subject: 'English', grade: 'Secondary', duration: '22:00', youtubeVideoId: 'rP01hYk1K1c', colorCodeClass: 'bg-blue-400' },
+  { id: '6', title: 'Basic English Grammar: Parts of Speech', subject: 'English', grade: 'Primary', duration: '10:15', youtubeVideoId: 'Yd__52nUnkY', colorCodeClass: 'bg-yellow-400' },
+  { id: '7', title: 'World War II: Crash Course World History #38', subject: 'History', grade: 'Secondary', duration: '30:00', youtubeVideoId: 'HlUiSBXQHCw', colorCodeClass: 'bg-blue-400' },
+  { id: '8', title: 'Ancient Egypt: Crash Course World History #4', subject: 'History', grade: 'Primary', duration: '14:30', youtubeVideoId: 'Z3Wvw6YivBY', colorCodeClass: 'bg-yellow-400' },
 ];
 
 const grades = ['All', 'Primary', 'Secondary'];
@@ -26,12 +27,21 @@ export default function VideoLibraryClient() {
   const [selectedGrade, setSelectedGrade] = useState('All');
   const [selectedSubject, setSelectedSubject] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentVideo, setCurrentVideo] = useState<{ id: string; title: string } | null>(null);
 
   const filteredVideos = videos.filter(video => 
     (selectedGrade === 'All' || video.grade === selectedGrade) &&
     (selectedSubject === 'All' || video.subject === selectedSubject) &&
     (video.title.toLowerCase().includes(searchTerm.toLowerCase()) || video.subject.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+
+  const handlePlayVideo = (videoId: string, videoTitle: string) => {
+    setCurrentVideo({ id: videoId, title: videoTitle });
+  };
+
+  const handleCloseModal = () => {
+    setCurrentVideo(null);
+  };
 
   return (
     <PageWrapper>
@@ -82,13 +92,26 @@ export default function VideoLibraryClient() {
       {filteredVideos.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredVideos.map(video => (
-            <VideoCard key={video.id} {...video} />
+            <VideoCard 
+              key={video.id} 
+              {...video} 
+              onPlay={handlePlayVideo}
+            />
           ))}
         </div>
       ) : (
         <div className="text-center py-12">
           <p className="text-xl text-muted-foreground">No videos found matching your criteria.</p>
         </div>
+      )}
+
+      {currentVideo && (
+        <VideoPlayerModal
+          youtubeVideoId={currentVideo.id}
+          title={currentVideo.title}
+          isOpen={!!currentVideo}
+          onClose={handleCloseModal}
+        />
       )}
     </PageWrapper>
   );
