@@ -107,7 +107,7 @@ export default function StudentDashboardClient() {
                 width={120}
                 height={120}
                 className="rounded-full mb-6 shadow-lg border-4 border-primary/50 transform hover:scale-105 transition-transform duration-300"
-                data-ai-hint="friendly robot mascot"
+                data-ai-hint="robot mascot"
               />
               <p className="text-muted-foreground mb-6 text-base">
                 Need help or have a question? Ask our AI assistant!
