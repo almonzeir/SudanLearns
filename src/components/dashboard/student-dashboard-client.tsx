@@ -102,12 +102,12 @@ export default function StudentDashboardClient() {
             </CardHeader>
             <CardContent className="flex flex-col items-center w-full max-w-lg">
               <Image
-                src="https://placehold.co/150x150.png"
+                src="https://thumbs.dreamstime.com/z/humanoid-education-robot-teacher-front-school-classroom-chalkboard-teaching-pupils-science-artificial-264713662.jpg"
                 alt="Study Helper Mascot"
                 width={120}
                 height={120}
                 className="rounded-full mb-6 shadow-lg border-4 border-primary/50 transform hover:scale-105 transition-transform duration-300"
-                data-ai-hint="robot mascot"
+                data-ai-hint="education robot"
               />
               <p className="text-accent font-medium mb-6 text-base">
                 Need help or have a question? Ask our AI assistant!

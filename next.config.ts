@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
         hostname: 'img.unocero.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'thumbs.dreamstime.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
