@@ -27,13 +27,14 @@ export default function HeroSection() {
   return (
     <div className="relative h-[calc(100vh-4rem)] min-h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
       <Image
-        src="https://wsuwp-uploads.s3.amazonaws.com/uploads/sites/90/2015/08/EDUCATION-text.jpg"
-        alt="Abstract image with the word EDUCATION"
+        src="https://img.unocero.com/2023/10/image-98-1024x574.png"
+        alt="Students in a modern classroom using laptops"
         layout="fill"
         objectFit="cover"
         quality={80}
         className="z-0 filter brightness-50"
         priority
+        data-ai-hint="students classroom"
       />
       <div className="relative z-10 p-4 sm:p-8 flex flex-col items-center">
         <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 shadow-lg">
