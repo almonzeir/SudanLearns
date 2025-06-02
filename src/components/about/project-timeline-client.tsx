@@ -9,17 +9,17 @@ import { HandHeart, School, Laptop } from 'lucide-react';
 import Image from 'next/image';
 
 const timelineData = [
-  { date: '2023 - Q1', title: 'Project Inception', description: 'The idea for Sudan Shines was born, aiming to bridge the educational gap in underserved regions of Sudan.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "idea lightbulb" },
-  { date: '2023 - Q3', title: 'Platform Development Begins', description: 'A dedicated team of volunteers started building the Sudan Shines online learning platform.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "team collaboration" },
-  { date: '2024 - Q1', title: 'Pilot Program Launch', description: 'Successfully launched a pilot program in two rural communities, providing access to 100+ students.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "students learning" },
-  { date: '2024 - Q2', title: 'Content Expansion', description: 'Added new courses and subjects based on feedback from the pilot program, expanding our curriculum.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "books library" },
+  { date: '2023 - Q1', title: 'Project Inception', description: 'The idea for Sudan Shines was born, aiming to bridge the educational gap in underserved regions of Sudan.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "concept idea" },
+  { date: '2023 - Q3', title: 'Platform Development Begins', description: 'A dedicated team of volunteers started building the Sudan Shines online learning platform.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "group work" },
+  { date: '2024 - Q1', title: 'Pilot Program Launch', description: 'Successfully launched a pilot program in two rural communities, providing access to 100+ students.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "kids studying" },
+  { date: '2024 - Q2', title: 'Content Expansion', description: 'Added new courses and subjects based on feedback from the pilot program, expanding our curriculum.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "education books" },
   { date: 'Future', title: 'Nationwide Reach', description: 'Our vision is to expand Sudan Shines to reach every child in Sudan, empowering a generation through education.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "Sudan map" },
 ];
 
 const testimonials = [
-  { quote: "Sudan Shines has opened a new world of learning for me. I can now dream bigger!", author: "Fatima, Student", imageUrl: "https://placehold.co/100x100.png", imageHint: "girl smiling" },
-  { quote: "Teaching with Sudan Shines has been an incredibly rewarding experience. The students are so eager to learn.", author: "Ahmed, Volunteer Teacher", imageUrl: "https://placehold.co/100x100.png", imageHint: "man teaching" },
-  { quote: "This platform is a beacon of hope. It's amazing to see technology used to empower our youth.", author: "Aisha, Community Leader", imageUrl: "https://placehold.co/100x100.png", imageHint: "woman leader" },
+  { quote: "Sudan Shines has opened a new world of learning for me. I can now dream bigger!", author: "Fatima, Student", imageUrl: "https://placehold.co/100x100.png", imageHint: "happy student" },
+  { quote: "Teaching with Sudan Shines has been an incredibly rewarding experience. The students are so eager to learn.", author: "Ahmed, Volunteer Teacher", imageUrl: "https://placehold.co/100x100.png", imageHint: "male teacher" },
+  { quote: "This platform is a beacon of hope. It's amazing to see technology used to empower our youth.", author: "Aisha, Community Leader", imageUrl: "https://placehold.co/100x100.png", imageHint: "female leader" },
 ];
 
 export default function ProjectTimelineClient() {

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -8,14 +9,14 @@ import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 
 const videos = [
-  { id: '1', title: 'Introduction to Algebra', subject: 'Mathematics', grade: 'Primary', duration: '12:34', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "math classroom", colorCodeClass: 'bg-yellow-400' },
-  { id: '2', title: 'The Solar System', subject: 'Science', grade: 'Primary', duration: '15:02', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "solar system", colorCodeClass: 'bg-yellow-400' },
-  { id: '3', title: 'Advanced Calculus Concepts', subject: 'Mathematics', grade: 'Secondary', duration: '25:10', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "calculus equations", colorCodeClass: 'bg-blue-400' },
-  { id: '4', title: 'Photosynthesis Explained', subject: 'Science', grade: 'Secondary', duration: '18:55', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "plant leaves", colorCodeClass: 'bg-blue-400' },
-  { id: '5', title: 'Shakespearean Sonnets', subject: 'English', grade: 'Secondary', duration: '22:00', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "old book", colorCodeClass: 'bg-blue-400' },
-  { id: '6', title: 'Basic Grammar Rules', subject: 'English', grade: 'Primary', duration: '10:15', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "notebook pen", colorCodeClass: 'bg-yellow-400' },
-  { id: '7', title: 'World War II Overview', subject: 'History', grade: 'Secondary', duration: '30:00', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "historic map", colorCodeClass: 'bg-blue-400' },
-  { id: '8', title: 'Ancient Civilizations', subject: 'History', grade: 'Primary', duration: '14:30', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "pyramids desert", colorCodeClass: 'bg-yellow-400' },
+  { id: '1', title: 'Introduction to Algebra', subject: 'Mathematics', grade: 'Primary', duration: '12:34', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "algebra lesson", colorCodeClass: 'bg-yellow-400' },
+  { id: '2', title: 'The Solar System', subject: 'Science', grade: 'Primary', duration: '15:02', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "space planets", colorCodeClass: 'bg-yellow-400' },
+  { id: '3', title: 'Advanced Calculus Concepts', subject: 'Mathematics', grade: 'Secondary', duration: '25:10', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "math equations", colorCodeClass: 'bg-blue-400' },
+  { id: '4', title: 'Photosynthesis Explained', subject: 'Science', grade: 'Secondary', duration: '18:55', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "botany science", colorCodeClass: 'bg-blue-400' },
+  { id: '5', title: 'Shakespearean Sonnets', subject: 'English', grade: 'Secondary', duration: '22:00', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "literature classic", colorCodeClass: 'bg-blue-400' },
+  { id: '6', title: 'Basic Grammar Rules', subject: 'English', grade: 'Primary', duration: '10:15', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "writing grammar", colorCodeClass: 'bg-yellow-400' },
+  { id: '7', title: 'World War II Overview', subject: 'History', grade: 'Secondary', duration: '30:00', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "history war", colorCodeClass: 'bg-blue-400' },
+  { id: '8', title: 'Ancient Civilizations', subject: 'History', grade: 'Primary', duration: '14:30', thumbnailUrl: 'https://placehold.co/400x225.png', thumbnailHint: "ancient egypt", colorCodeClass: 'bg-yellow-400' },
 ];
 
 const grades = ['All', 'Primary', 'Secondary'];
