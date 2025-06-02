@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -14,8 +15,8 @@ export default function BadgeItem({ name, icon: Icon, description, achieved = tr
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Card className={`p-3 flex flex-col items-center justify-center aspect-square transition-all duration-300 ${achieved ? 'opacity-100 border-primary shadow-md' : 'opacity-50 bg-muted'}`}>
-            <Icon className={`h-10 w-10 mb-2 ${achieved ? 'text-primary' : 'text-muted-foreground'}`} />
+          <Card className={`p-3 flex flex-col items-center justify-center aspect-square transition-all duration-300 group hover:shadow-xl hover:scale-105 ${achieved ? 'opacity-100 border-primary shadow-md' : 'opacity-50 bg-muted cursor-not-allowed'}`}>
+            <Icon className={`h-10 w-10 mb-2 transition-transform duration-300 group-hover:scale-110 ${achieved ? 'text-primary' : 'text-muted-foreground'}`} />
             <p className={`text-xs font-medium text-center ${achieved ? 'text-foreground' : 'text-muted-foreground'}`}>{name}</p>
           </Card>
         </TooltipTrigger>

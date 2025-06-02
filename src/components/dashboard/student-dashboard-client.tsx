@@ -54,7 +54,7 @@ export default function StudentDashboardClient() {
 
   return (
     <PageWrapper>
-      <div className="space-y-8">
+      <div className="space-y-12"> {/* Increased spacing between sections */}
         <DynamicQuoteDisplay />
 
         <section>
@@ -68,16 +68,16 @@ export default function StudentDashboardClient() {
 
         <section>
           <h2 className="text-3xl font-headline font-semibold mb-6">Overall Progress</h2>
-          <Card>
-            <CardContent className="pt-6 flex flex-col sm:flex-row items-center justify-around gap-6">
-              <div className="flex flex-col items-center">
+          <Card className="bg-gradient-to-tr from-card to-secondary/20 shadow-lg border border-border/50">
+            <CardContent className="pt-8 pb-8 flex flex-col sm:flex-row items-center justify-around gap-8 sm:gap-12">
+              <div className="flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
                 <ProgressRing percentage={65} size={150} strokeWidth={12} />
-                <p className="mt-2 text-muted-foreground">Total Completion</p>
+                <p className="mt-3 text-sm font-medium text-muted-foreground">Total Completion</p>
               </div>
-              <div className="space-y-2 text-center sm:text-left">
-                <p className="text-lg"><span className="font-semibold">Courses in Progress:</span> 3</p>
-                <p className="text-lg"><span className="font-semibold">Courses Completed:</span> 2</p>
-                <p className="text-lg"><span className="font-semibold">Next Milestone:</span> Complete Science 101</p>
+              <div className="space-y-3 text-center sm:text-left">
+                <p className="text-lg"><span className="font-semibold text-foreground">Courses in Progress:</span> <span className="text-primary font-bold text-xl">3</span></p>
+                <p className="text-lg"><span className="font-semibold text-foreground">Courses Completed:</span> <span className="text-primary font-bold text-xl">2</span></p>
+                <p className="text-lg"><span className="font-semibold text-foreground">Next Milestone:</span> <span className="text-accent-foreground font-medium">Complete Science 101</span></p>
               </div>
             </CardContent>
           </Card>
@@ -85,7 +85,7 @@ export default function StudentDashboardClient() {
         
         <section>
           <h2 className="text-3xl font-headline font-semibold mb-6">Achievements</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
             {badges.map((badge) => (
               <BadgeItem key={badge.name} name={badge.name} icon={badge.icon} description={badge.description} achieved={badge.achieved} />
             ))}
@@ -93,40 +93,42 @@ export default function StudentDashboardClient() {
         </section>
 
         <section>
-          <Card className="bg-secondary/50 flex flex-col items-center text-center p-6 hover:shadow-lg transition-shadow">
-            <CardHeader className="p-2 items-center">
-              <CardTitle className="font-headline flex items-center text-2xl">
-                <Bot className="mr-3 h-8 w-8 text-primary"/>
+          <Card className="bg-gradient-to-br from-accent/10 to-primary/10 border-primary/20 flex flex-col items-center text-center p-6 sm:p-8 hover:shadow-xl transition-shadow duration-300 rounded-lg">
+            <CardHeader className="p-2 items-center mb-2">
+              <CardTitle className="font-headline flex items-center text-2xl sm:text-3xl text-primary-foreground">
+                <Bot className="mr-3 h-8 w-8 sm:h-10 sm:w-10 text-primary"/>
                 Study Helper
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col items-center w-full max-w-md">
+            <CardContent className="flex flex-col items-center w-full max-w-lg">
               <Image
                 src="https://placehold.co/150x150.png"
                 alt="Study Helper Mascot"
-                width={100}
-                height={100}
-                className="rounded-full mb-4 shadow-md border-2 border-primary"
-                data-ai-hint="friendly robot"
+                width={120}
+                height={120}
+                className="rounded-full mb-6 shadow-lg border-4 border-primary/50 transform hover:scale-105 transition-transform duration-300"
+                data-ai-hint="friendly robot mascot"
               />
-              <p className="text-muted-foreground mb-4">
+              <p className="text-muted-foreground mb-6 text-base">
                 Need help or have a question? Ask our AI assistant!
               </p>
-              <div className="w-full space-y-2 mb-4">
+              <div className="w-full space-y-3 mb-6">
                 <Textarea
                   placeholder="Type your question here..."
                   value={studyQuestion}
                   onChange={(e) => setStudyQuestion(e.target.value)}
                   rows={3}
                   disabled={isStudyHelperLoading}
+                  className="text-base focus:border-primary"
                 />
                 <Button 
                   onClick={handleAskStudyHelper} 
                   disabled={isStudyHelperLoading || !studyQuestion.trim()} 
-                  className="w-full"
+                  className="w-full text-base py-3 h-auto bg-primary hover:bg-primary/90 text-primary-foreground transition-all hover:shadow-md transform hover:scale-[1.02]"
+                  size="lg"
                 >
                   {isStudyHelperLoading ? (
-                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Asking...</>
+                    <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Asking...</>
                   ) : (
                     "Ask AI Helper"
                   )}
@@ -142,12 +144,15 @@ export default function StudentDashboardClient() {
               )}
 
               {studyAnswer && !studyHelperError && (
-                <Card className="w-full mt-4 p-4 text-left bg-background shadow-inner">
+                <Card className="w-full mt-6 p-4 text-left bg-background/80 shadow-inner border border-border rounded-lg">
                   <CardHeader className="p-0 pb-2">
-                    <CardTitle className="text-md font-headline text-primary">AI Helper's Answer:</CardTitle>
+                    <CardTitle className="text-md font-headline text-primary flex items-center">
+                       <Sparkles className="w-5 h-5 mr-2 text-yellow-400" />
+                      AI Helper's Answer:
+                    </CardTitle>
                   </CardHeader>
                   <CardContent className="p-0">
-                    <p className="text-sm whitespace-pre-wrap">{studyAnswer.answer}</p>
+                    <p className="text-sm whitespace-pre-wrap text-foreground/90">{studyAnswer.answer}</p>
                   </CardContent>
                 </Card>
               )}
