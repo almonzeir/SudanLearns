@@ -150,7 +150,9 @@ export default function ProjectTimelineClient() {
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="mb-6 min-h-[40px]">Provide students with the tools they need to access education.</CardDescription>
-                <Button className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 w-full sm:w-auto">Donate Devices</Button>
+                <Button asChild className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 w-full sm:w-auto">
+                  <Link href="/about/donate">Donate Devices</Link>
+                </Button>
               </CardContent>
             </Card>
           </div>
@@ -159,5 +161,3 @@ export default function ProjectTimelineClient() {
     </PageWrapper>
   );
 }
-
-    
