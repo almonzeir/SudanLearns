@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -100,7 +99,7 @@ export default function StudentDashboardClient() {
           <Card className="bg-gradient-to-br from-accent/10 to-primary/10 border-primary/20 flex flex-col items-center text-center p-6 sm:p-8 hover:shadow-xl transition-shadow duration-300 rounded-lg">
             <CardHeader className="p-2 items-center mb-4">
                 <Bot className="h-20 w-20 text-primary mb-4" />
-                <CardTitle className="font-headline text-3xl sm:text-4xl text-primary-foreground">
+                <CardTitle className="font-headline text-3xl sm:text-4xl text-primary">
                     AI Study Helper
                 </CardTitle>
                 <CardDescription className="text-lg text-accent-foreground max-w-md mx-auto mt-2">
