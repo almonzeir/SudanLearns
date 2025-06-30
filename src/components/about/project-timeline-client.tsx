@@ -5,9 +5,10 @@ import { PageWrapper } from '@/components/ui/page-wrapper';
 import TimelineEvent from './timeline-event';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { HandHeart, School, Laptop } from 'lucide-react';
+import { HandHeart, School, Laptop, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
 
 const timelineData = [
   { date: '2023 - Q1', title: 'Project Inception', description: 'The idea for Sudan Shines was born, aiming to bridge the educational gap in underserved regions of Sudan.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "idea lightbulb" },
@@ -17,10 +18,38 @@ const timelineData = [
   { date: 'Future', title: 'Nationwide Reach', description: 'Our vision is to expand Sudan Shines to reach every child in Sudan, empowering a generation through education.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "Sudan children" },
 ];
 
-const testimonials = [
-  { quote: "Sudan Shines has opened a new world of learning for me. I can now dream bigger!", author: "Fatima, Student", imageUrl: "https://placehold.co/100x100.png", imageHint: "smiling student" },
-  { quote: "Teaching with Sudan Shines has been an incredibly rewarding experience. The students are so eager to learn.", author: "Ahmed, Volunteer Teacher", imageUrl: "https://placehold.co/100x100.png", imageHint: "teacher classroom" },
-  { quote: "This platform is a beacon of hope. It's amazing to see technology used to empower our youth.", author: "Aisha, Community Leader", imageUrl: "https://placehold.co/100x100.png", imageHint: "community support" },
+const teamMembers = [
+    {
+        name: "Almonzer Hamid Sarray Abdallah",
+        role: "Leader & Page Developer",
+        imageUrl: "https://placehold.co/150x150.png",
+        imageHint: "male portrait developer",
+        isLeader: true,
+    },
+    {
+        name: "Abdullahi Mohamed Ali",
+        role: "Organizer (AIU22102225, Somalia)",
+        imageUrl: "https://placehold.co/150x150.png",
+        imageHint: "male portrait organizer",
+    },
+    {
+        name: "Anas Ismail Ahmed",
+        role: "Organizer (AIU 22102251)",
+        imageUrl: "https://placehold.co/150x150.png",
+        imageHint: "male portrait student",
+    },
+    {
+        name: "Modou Lamin Kinteh",
+        role: "Organizer",
+        imageUrl: "https://placehold.co/150x150.png",
+        imageHint: "male portrait",
+    },
+    {
+        name: "Reem Bekdash",
+        role: "Organizer",
+        imageUrl: "https://placehold.co/150x150.png",
+        imageHint: "female portrait",
+    },
 ];
 
 export default function ProjectTimelineClient() {
@@ -46,13 +75,32 @@ export default function ProjectTimelineClient() {
       </section>
 
       <section className="mb-16">
-        <h2 className="text-3xl font-headline font-semibold mb-8 text-center">Voices from Our Community</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map(testimonial => (
-            <Card key={testimonial.author} className="flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-shadow p-6 rounded-lg">
-               <Image src={testimonial.imageUrl} alt={testimonial.author} data-ai-hint={testimonial.imageHint} width={80} height={80} className="rounded-full mb-4 border-2 border-primary" />
-              <blockquote className="italic text-foreground mb-4 flex-grow">&ldquo;{testimonial.quote}&rdquo;</blockquote>
-              <p className="font-semibold text-primary">- {testimonial.author}</p>
+        <h2 className="text-3xl font-headline font-semibold mb-12 text-center">Meet Our Team</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+          {teamMembers.slice(0, 3).map(member => (
+             <Card key={member.name} className="flex flex-col items-center text-center p-6 rounded-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-border/50">
+               <div className="relative">
+                <Image src={member.imageUrl} alt={member.name} data-ai-hint={member.imageHint} width={120} height={120} className="rounded-full mb-4 border-4 border-primary/50" />
+                {member.isLeader && (
+                    <Badge className="absolute top-0 right-0 -mr-2 text-xs py-1 px-3">
+                        <Star className="w-3 h-3 mr-1"/>
+                        Leader
+                    </Badge>
+                )}
+               </div>
+              <CardTitle className="text-xl font-headline mb-1">{member.name}</CardTitle>
+              <CardDescription>{member.role}</CardDescription>
+            </Card>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-center mt-8 lg:w-2/3 mx-auto">
+             {teamMembers.slice(3).map(member => (
+             <Card key={member.name} className="flex flex-col items-center text-center p-6 rounded-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-border/50">
+               <div className="relative">
+                <Image src={member.imageUrl} alt={member.name} data-ai-hint={member.imageHint} width={120} height={120} className="rounded-full mb-4 border-4 border-primary/50" />
+               </div>
+              <CardTitle className="text-xl font-headline mb-1">{member.name}</CardTitle>
+              <CardDescription>{member.role}</CardDescription>
             </Card>
           ))}
         </div>
@@ -111,3 +159,5 @@ export default function ProjectTimelineClient() {
     </PageWrapper>
   );
 }
+
+    
