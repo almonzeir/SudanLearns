@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { HandHeart, School, Laptop } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const timelineData = [
   { date: '2023 - Q1', title: 'Project Inception', description: 'The idea for Sudan Shines was born, aiming to bridge the educational gap in underserved regions of Sudan.', imageUrl: 'https://placehold.co/300x200.png', imageHint: "idea lightbulb" },
@@ -73,7 +74,9 @@ export default function ProjectTimelineClient() {
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="mb-6 min-h-[40px]">Share your knowledge and inspire students as a volunteer teacher.</CardDescription>
-                <Button className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 w-full sm:w-auto">Become a Teacher</Button>
+                <Button asChild className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 w-full sm:w-auto">
+                  <Link href="/about/apply">Become a Teacher</Link>
+                </Button>
               </CardContent>
             </Card>
             <Card className="p-6 group hover:shadow-xl hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 rounded-lg">
