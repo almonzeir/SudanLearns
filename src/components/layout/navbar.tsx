@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { BookOpen, LayoutDashboard, Video, ListChecks, Info, Sparkles } from 'lucide-react';
+import { BookOpen, LayoutDashboard, Video, ListChecks, Info, Sparkles, Bot } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -52,7 +52,13 @@ export default function Navbar() {
         <nav className="hidden md:flex flex-1 items-center space-x-2">
           <NavLinks />
         </nav>
-        <div className="flex flex-1 items-center justify-end space-x-4">
+        <div className="flex flex-1 items-center justify-end space-x-2 sm:space-x-4">
+          <Button variant="ghost" size="icon" asChild>
+            <Link href="/dashboard#ai-study-helper" aria-label="AI Study Helper">
+              <Bot className="h-5 w-5" />
+              <span className="sr-only">AI Study Helper</span>
+            </Link>
+          </Button>
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
