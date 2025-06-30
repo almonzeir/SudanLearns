@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -27,8 +28,9 @@ export default function Navbar() {
           key={item.label}
           variant="ghost"
           asChild
+          size="sm"
           className={cn(
-            "justify-start w-full text-sm font-medium",
+            "justify-start w-full font-medium",
             mobile ? "mb-2 text-lg" : "text-sm",
             pathname === item.href ? "bg-accent text-accent-foreground" : ""
           )}
@@ -49,14 +51,14 @@ export default function Navbar() {
           <Sparkles className="h-6 w-6 text-primary" />
           <span className="font-bold font-headline text-xl">Sudan Shines</span>
         </Link>
-        <nav className="hidden md:flex flex-1 items-center space-x-2">
+        <nav className="hidden md:flex flex-1 items-center space-x-1">
           <NavLinks />
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-2 sm:space-x-4">
-          <Button variant="ghost" size="icon" asChild>
+          <Button variant="ghost" asChild>
             <Link href="/dashboard#ai-study-helper">
               <Bot className="h-5 w-5" />
-              <span className="sr-only">Ask AI</span>
+              <span className="hidden md:inline-block ml-2 font-medium">Ask AI</span>
             </Link>
           </Button>
           <ThemeToggle />
