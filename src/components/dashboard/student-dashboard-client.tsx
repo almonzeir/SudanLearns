@@ -7,6 +7,7 @@ import SubjectCard from './subject-card';
 import ProgressRing from './progress-ring';
 import BadgeItem from './badge-item';
 import DynamicQuoteDisplay from './dynamic-quote-display';
+import LiveClassCard from './live-class-card';
 import { BookOpen, Calculator, FlaskConical, Globe, ScrollText, Lightbulb, Rocket, Award, Sparkles, Bot, AlertCircle, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
@@ -56,6 +57,10 @@ export default function StudentDashboardClient() {
     <PageWrapper>
       <div className="space-y-12"> {/* Increased spacing between sections */}
         <DynamicQuoteDisplay />
+
+        <section>
+          <LiveClassCard />
+        </section>
 
         <section>
           <h2 className="text-3xl font-headline font-semibold mb-6">Your Subjects</h2>
