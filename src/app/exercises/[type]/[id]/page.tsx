@@ -2,7 +2,7 @@ import { PageWrapper } from '@/components/ui/page-wrapper';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Construction } from 'lucide-react';
+import { ArrowLeft, Clock, FileText } from 'lucide-react';
 import QuizAttempt from '@/components/exercises/quiz-attempt';
 import AssignmentAttempt from '@/components/exercises/assignment-attempt';
 
@@ -28,17 +28,20 @@ const renderContent = (type: string, id: string) => {
       return (
         <Card className="max-w-2xl mx-auto shadow-xl">
           <CardHeader className="items-center text-center">
-            <Construction className="h-12 w-12 text-primary mb-4" />
+            <div className="flex items-center justify-center space-x-4 mb-4">
+                <FileText className="h-12 w-12 text-primary" />
+                <Clock className="h-12 w-12 text-primary" />
+            </div>
             <CardTitle className="font-headline text-2xl sm:text-3xl text-primary">
-              Feature Under Construction
+              Exams Feature Coming Soon!
             </CardTitle>
             <CardDescription className="text-base">
-              The interface for <span className="font-semibold">{displayType.toLowerCase()}s</span> is being developed.
+              The interface for timed exams is currently under development.
             </CardDescription>
           </CardHeader>
           <CardContent className="text-center text-foreground">
             <p>
-              We are working hard to bring you an interactive experience for {displayType.toLowerCase()}s. Please check back soon!
+              We're building a robust system for timed exams with automatic grading. This feature will be available in a future update. Please check back later!
             </p>
           </CardContent>
         </Card>
