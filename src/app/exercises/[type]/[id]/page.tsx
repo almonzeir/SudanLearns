@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Construction } from 'lucide-react';
 import QuizAttempt from '@/components/exercises/quiz-attempt';
+import AssignmentAttempt from '@/components/exercises/assignment-attempt';
 
 interface ExerciseDetailPageProps {
   params: {
@@ -21,6 +22,8 @@ const renderContent = (type: string, id: string) => {
       return <QuizAttempt exerciseId={id} />;
     
     case 'assignments':
+      return <AssignmentAttempt exerciseId={id} />;
+    
     case 'exams':
       return (
         <Card className="max-w-2xl mx-auto shadow-xl">
