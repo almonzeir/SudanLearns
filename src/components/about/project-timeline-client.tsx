@@ -88,7 +88,9 @@ export default function ProjectTimelineClient() {
               </CardHeader>
               <CardContent className="text-center">
                 <CardDescription className="mb-6 min-h-[40px]">Help us provide resources and support to schools in need.</CardDescription>
-                <Button className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 w-full sm:w-auto">Sponsor Now</Button>
+                <Button asChild className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300 w-full sm:w-auto">
+                  <Link href="/about/sponsor">Sponsor Now</Link>
+                </Button>
               </CardContent>
             </Card>
             <Card className="p-6 group hover:shadow-xl hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 rounded-lg">
