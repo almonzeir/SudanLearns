@@ -54,9 +54,9 @@ export default function Navbar() {
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-2 sm:space-x-4">
           <Button variant="ghost" size="icon" asChild>
-            <Link href="/dashboard#ai-study-helper" aria-label="AI Study Helper">
+            <Link href="/dashboard#ai-study-helper" aria-label="Ask AI">
               <Bot className="h-5 w-5" />
-              <span className="sr-only">AI Study Helper</span>
+              <span className="sr-only">Ask AI</span>
             </Link>
           </Button>
           <ThemeToggle />
