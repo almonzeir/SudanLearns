@@ -56,18 +56,40 @@ export default function DonateForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    // Simulate backend submission
-    console.log("Donation Form Submitted:", values);
-    setTimeout(() => {
-        setIsLoading(false);
-        toast({
-            title: "Thank You!",
-            description: "Your donation has been registered. We will contact you shortly to arrange pickup.",
+    try {
+        const response = await fetch("https://submit-form.com/CaDOFKO5k", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify({
+                ...values,
+                formName: "Device Donation"
+            }),
         });
-        form.reset();
-    }, 1500);
+
+        if (response.ok) {
+            toast({
+                title: "Thank You!",
+                description: "Your donation has been registered. We will contact you shortly to arrange pickup.",
+            });
+            form.reset();
+        } else {
+            throw new Error("Form submission failed");
+        }
+    } catch (error) {
+        console.error(error);
+        toast({
+            variant: "destructive",
+            title: "Submission Error",
+            description: "There was a problem registering your donation. Please try again.",
+        });
+    } finally {
+        setIsLoading(false);
+    }
   }
   
   return (

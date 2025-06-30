@@ -51,18 +51,39 @@ export default function SponsorForm() {
         },
     });
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsLoading(true);
-        console.log("Sponsorship Form Submitted:", values);
-        // Simulate backend payment processing
-        setTimeout(() => {
-            setIsLoading(false);
-            toast({
-                title: "Thank you for your generosity!",
-                description: "Your sponsorship has been processed. A confirmation has been sent to your email.",
+        try {
+            const response = await fetch("https://submit-form.com/CaDOFKO5k", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    ...values,
+                    formName: "Sponsorship"
+                }),
             });
-            form.reset();
-        }, 2000);
+            if (response.ok) {
+                toast({
+                    title: "Thank you for your generosity!",
+                    description: "Your sponsorship has been processed. A confirmation has been sent to your email.",
+                });
+                form.reset();
+            } else {
+                throw new Error("Form submission failed");
+            }
+        } catch (error) {
+            console.error(error);
+            toast({
+                variant: "destructive",
+                title: "Submission Error",
+                description: "There was a problem processing your sponsorship. Please try again.",
+            });
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     const setAmount = (value: number) => {

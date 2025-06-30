@@ -63,18 +63,41 @@ export default function ApplyForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    // Simulate backend submission
-    console.log("Form Submitted:", values);
-    setTimeout(() => {
-        setIsLoading(false);
-        toast({
-            title: "Application Received!",
-            description: "Thank you for your interest. We will review your application and get back to you soon.",
+    const formData = new FormData();
+    formData.append("fullName", values.fullName);
+    formData.append("email", values.email);
+    formData.append("subjects", values.subjects);
+    formData.append("bio", values.bio);
+    formData.append("cv", values.cv[0]);
+    formData.append("formName", "Teacher Application");
+
+    try {
+        const response = await fetch("https://submit-form.com/CaDOFKO5k", {
+            method: "POST",
+            body: formData,
         });
-        form.reset();
-    }, 1500);
+
+        if (response.ok) {
+            toast({
+                title: "Application Received!",
+                description: "Thank you for your interest. We will review your application and get back to you soon.",
+            });
+            form.reset();
+        } else {
+             throw new Error("Form submission failed");
+        }
+    } catch (error) {
+        console.error(error);
+        toast({
+            variant: "destructive",
+            title: "Submission Error",
+            description: "There was a problem submitting your application. Please try again.",
+        });
+    } finally {
+        setIsLoading(false);
+    }
   }
   
   return (
