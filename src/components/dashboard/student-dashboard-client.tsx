@@ -9,8 +9,7 @@ import BadgeItem from './badge-item';
 import DynamicQuoteDisplay from './dynamic-quote-display';
 import LiveClassCard from './live-class-card';
 import { BookOpen, Calculator, FlaskConical, Globe, ScrollText, Lightbulb, Rocket, Award, Sparkles, Bot, AlertCircle, Loader2 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Image from 'next/image';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -99,27 +98,19 @@ export default function StudentDashboardClient() {
 
         <section>
           <Card className="bg-gradient-to-br from-accent/10 to-primary/10 border-primary/20 flex flex-col items-center text-center p-6 sm:p-8 hover:shadow-xl transition-shadow duration-300 rounded-lg">
-            <CardHeader className="p-2 items-center mb-2">
-              <CardTitle className="font-headline flex items-center text-2xl sm:text-3xl text-primary-foreground">
-                <Bot className="mr-3 h-8 w-8 sm:h-10 sm:w-10 text-primary"/>
-                Study Helper
-              </CardTitle>
+            <CardHeader className="p-2 items-center mb-4">
+                <Bot className="h-20 w-20 text-primary mb-4" />
+                <CardTitle className="font-headline text-3xl sm:text-4xl text-primary-foreground">
+                    AI Study Helper
+                </CardTitle>
+                <CardDescription className="text-lg text-accent-foreground max-w-md mx-auto mt-2">
+                    Stuck on a problem or have a question? Ask our friendly AI assistant for help!
+                </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col items-center w-full max-w-lg">
-              <Image
-                src="https://thumbs.dreamstime.com/z/humanoid-education-robot-teacher-front-school-classroom-chalkboard-teaching-pupils-science-artificial-264713662.jpg"
-                alt="Study Helper Mascot"
-                width={120}
-                height={120}
-                className="rounded-full mb-6 shadow-lg border-4 border-primary/50 transform hover:scale-105 transition-transform duration-300"
-                data-ai-hint="education robot"
-              />
-              <p className="text-accent font-medium mb-6 text-base">
-                Need help or have a question? Ask our AI assistant!
-              </p>
               <div className="w-full space-y-3 mb-6">
                 <Textarea
-                  placeholder="Type your question here..."
+                  placeholder="For example: 'Can you explain photosynthesis in simple terms?'"
                   value={studyQuestion}
                   onChange={(e) => setStudyQuestion(e.target.value)}
                   rows={3}
@@ -158,6 +149,7 @@ export default function StudentDashboardClient() {
                   </CardHeader>
                   <CardContent className="p-0">
                     <p className="text-sm whitespace-pre-wrap text-foreground/90">{studyAnswer.answer}</p>
+
                   </CardContent>
                 </Card>
               )}
