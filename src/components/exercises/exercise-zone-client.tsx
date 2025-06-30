@@ -1,51 +1,40 @@
+
 "use client";
 
 import { PageWrapper } from '@/components/ui/page-wrapper';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { CheckCircle, Edit3, FileText, ListChecks } from 'lucide-react';
-import Link from 'next/link';
+import { Edit3, FileText, ListChecks } from 'lucide-react';
+import ExerciseCard, { type Exercise } from './exercise-card';
 
-const exerciseItems = {
-  quizzes: [
-    { id: 'q1', title: 'Math Basics Quiz', subject: 'Mathematics', completed: true, score: '9/10' },
-    { id: 'q2', title: 'Science Facts Challenge', subject: 'Science', completed: false },
-    { id: 'q3', title: 'English Grammar Test', subject: 'English', completed: true, score: '15/20' },
-  ],
-  assignments: [
-    { id: 'a1', title: 'Algebra Problem Set', subject: 'Mathematics', dueDate: '2024-08-15', submitted: true },
-    { id: 'a2', title: 'Lab Report: Photosynthesis', subject: 'Science', dueDate: '2024-08-20', submitted: false },
-  ],
-  exams: [
-    { id: 'e1', title: 'Mid-term Mathematics Exam', subject: 'Mathematics', date: '2024-09-01', upcoming: true },
-    { id: 'e2', title: 'Final English Literature Exam', subject: 'English', date: '2024-09-15', upcoming: true },
-  ],
+const exerciseItems: Exercise[] = [
+  // Quizzes
+  { id: 'q1', type: 'quizzes', title: 'Math Basics Quiz', subject: 'Mathematics', status: 'Completed', score: '9/10' },
+  { id: 'q2', type: 'quizzes', title: 'Science Facts Challenge', subject: 'Science', status: 'Not Started' },
+  { id: 'q3', type: 'quizzes', title: 'English Grammar Test', subject: 'English', status: 'Graded', score: '15/20' },
+  { id: 'q4', type: 'quizzes', title: 'World History Trivia', subject: 'History', status: 'Overdue' },
+
+  // Assignments
+  { id: 'a1', type: 'assignments', title: 'Algebra Problem Set', subject: 'Mathematics', status: 'Submitted', dueDate: '2024-08-15' },
+  { id: 'a2', type: 'assignments', title: 'Lab Report: Photosynthesis', subject: 'Science', status: 'Not Started', dueDate: '2024-08-20' },
+  { id: 'a3', type: 'assignments', title: 'Essay: The Great Gatsby', subject: 'English', status: 'Graded', dueDate: '2024-08-10', score: 'A-' },
+  { id: 'a4', type: 'assignments', title: 'Geography Research Project', subject: 'Geography', status: 'Overdue', dueDate: '2024-08-01' },
+
+  // Exams
+  { id: 'e1', type: 'exams', title: 'Mid-term Mathematics Exam', subject: 'Mathematics', status: 'Upcoming', date: '2024-09-01' },
+  { id: 'e2', type: 'exams', title: 'Final English Literature Exam', subject: 'English', status: 'Upcoming', date: '2024-09-15' },
+  { id: 'e3', type: 'exams', title: 'Final Science Exam', subject: 'Science', status: 'Upcoming', date: '2024-09-18' },
+];
+
+const renderExerciseList = (items: Exercise[], type: 'quizzes' | 'assignments' | 'exams') => {
+  const filteredItems = items.filter(item => item.type === type);
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {filteredItems.length > 0 ? filteredItems.map(item => (
+        <ExerciseCard key={item.id} exercise={item} />
+      )) : <p className="text-muted-foreground col-span-full text-center py-8">No {type} available at the moment.</p>}
+    </div>
+  );
 };
-
-const renderExerciseList = (items: any[], type: string) => (
-  <div className="space-y-4">
-    {items.length > 0 ? items.map(item => (
-      <Card key={item.id} className="hover:shadow-md transition-shadow">
-        <CardHeader>
-          <CardTitle className="text-lg font-headline flex justify-between items-center">
-            {item.title}
-            {item.completed && <CheckCircle className="h-5 w-5 text-green-500" />}
-            {item.upcoming && <span className="text-xs text-blue-500 font-medium">UPCOMING</span>}
-          </CardTitle>
-          <CardDescription>{item.subject} {item.score && `| Score: ${item.score}`} {item.dueDate && `| Due: ${item.dueDate}`} {item.date && `| Date: ${item.date}`}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Button variant={item.completed || item.submitted ? "secondary" : "default"} size="sm" asChild>
-            <Link href={`/exercises/${type}/${item.id}`}>
-              {item.completed || item.submitted ? 'View Details' : `Start ${type.slice(0, -1)}`}
-            </Link>
-          </Button>
-        </CardContent>
-      </Card>
-    )) : <p className="text-muted-foreground">No {type} available at the moment.</p>}
-  </div>
-);
 
 
 export default function ExerciseZoneClient() {
@@ -53,29 +42,29 @@ export default function ExerciseZoneClient() {
     <PageWrapper>
       <div className="mb-8 text-center">
         <h1 className="text-4xl font-headline font-bold mb-2">Exercise Zone</h1>
-        <p className="text-lg text-muted-foreground">Test your knowledge and complete assignments.</p>
+        <p className="text-lg text-muted-foreground">Test your knowledge and complete your assignments.</p>
       </div>
 
       <Tabs defaultValue="quizzes" className="w-full">
-        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-6">
-          <TabsTrigger value="quizzes" className="py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-8 h-auto p-1.5">
+          <TabsTrigger value="quizzes" className="py-2.5 text-base data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
             <ListChecks className="mr-2 h-5 w-5" /> Quizzes
           </TabsTrigger>
-          <TabsTrigger value="assignments" className="py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <TabsTrigger value="assignments" className="py-2.5 text-base data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
             <Edit3 className="mr-2 h-5 w-5" /> Assignments
           </TabsTrigger>
-          <TabsTrigger value="exams" className="py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <TabsTrigger value="exams" className="py-2.5 text-base data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
             <FileText className="mr-2 h-5 w-5" /> Exams
           </TabsTrigger>
         </TabsList>
         <TabsContent value="quizzes">
-          {renderExerciseList(exerciseItems.quizzes, 'quizzes')}
+          {renderExerciseList(exerciseItems, 'quizzes')}
         </TabsContent>
         <TabsContent value="assignments">
-          {renderExerciseList(exerciseItems.assignments, 'assignments')}
+          {renderExerciseList(exerciseItems, 'assignments')}
         </TabsContent>
         <TabsContent value="exams">
-          {renderExerciseList(exerciseItems.exams, 'exams')}
+          {renderExerciseList(exerciseItems, 'exams')}
         </TabsContent>
       </Tabs>
     </PageWrapper>
