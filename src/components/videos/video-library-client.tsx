@@ -13,12 +13,20 @@ import { Search, Filter } from 'lucide-react';
 const videos = [
   { id: '1', title: 'Introduction to Algebra', subject: 'Mathematics', grade: 'Primary', duration: '12:34', youtubeVideoId: 'NybHckSEQBI', colorCodeClass: 'bg-yellow-400' },
   { id: '2', title: 'The Solar System - Fun Facts for Kids', subject: 'Science', grade: 'Primary', duration: '15:02', youtubeVideoId: 'libKVRa01L8', colorCodeClass: 'bg-yellow-400' },
-  { id: '3', title: 'Calculus 1 - Full College Course', subject: 'Mathematics', grade: 'Secondary', duration: '25:10', youtubeVideoId: 'WUvTyaaNkzM', colorCodeClass: 'bg-blue-400' },
-  { id: '4', title: 'Photosynthesis: Crash Course Biology #8', subject: 'Science', grade: 'Secondary', duration: '18:55', youtubeVideoId: 'uixA8ZXx0KU', colorCodeClass: 'bg-blue-400' },
-  { id: '5', title: 'Why Shakespeare Loved Iambic Pentameter', subject: 'English', grade: 'Secondary', duration: '22:00', youtubeVideoId: 'rP01hYk1K1c', colorCodeClass: 'bg-blue-400' },
+  { id: '3', title: 'Calculus 1 - Full College Course', subject: 'Mathematics', grade: 'Secondary', duration: '11:51:33', youtubeVideoId: 'HfACr0Mpw9A', colorCodeClass: 'bg-blue-400' },
+  { id: '4', title: 'Photosynthesis: Crash Course Biology #8', subject: 'Science', grade: 'Secondary', duration: '13:14', youtubeVideoId: 'uixA8ZXx0KU', colorCodeClass: 'bg-blue-400' },
+  { id: '5', title: 'Why Shakespeare Loved Iambic Pentameter', subject: 'English', grade: 'Secondary', duration: '05:40', youtubeVideoId: 'rP01hYk1K1c', colorCodeClass: 'bg-blue-400' },
   { id: '6', title: 'Basic English Grammar: Parts of Speech', subject: 'English', grade: 'Primary', duration: '10:15', youtubeVideoId: 'Yd__52nUnkY', colorCodeClass: 'bg-yellow-400' },
-  { id: '7', title: 'World War II: Crash Course World History #38', subject: 'History', grade: 'Secondary', duration: '30:00', youtubeVideoId: 'HlUiSBXQHCw', colorCodeClass: 'bg-blue-400' },
-  { id: '8', title: 'Ancient Egypt: Crash Course World History #4', subject: 'History', grade: 'Primary', duration: '14:30', youtubeVideoId: 'Z3Wvw6YivBY', colorCodeClass: 'bg-yellow-400' },
+  { id: '7', title: 'World War II: Crash Course World History #38', subject: 'History', grade: 'Secondary', duration: '13:58', youtubeVideoId: 'HlUiSBXQHCw', colorCodeClass: 'bg-blue-400' },
+  { id: '8', title: 'Ancient Egypt: Crash Course World History #4', subject: 'History', grade: 'Primary', duration: '11:54', youtubeVideoId: 'Z3Wvw6YivBY', colorCodeClass: 'bg-yellow-400' },
+  { id: '9', title: 'Math Antics - Basic Probability', subject: 'Mathematics', grade: 'Primary', duration: '10:00', youtubeVideoId: 'KzfWUEJjG18', colorCodeClass: 'bg-yellow-400' },
+  { id: '10', title: 'Essence of calculus, chapter 1', subject: 'Mathematics', grade: 'Secondary', duration: '20:17', youtubeVideoId: 'WUvTyaaNkzM', colorCodeClass: 'bg-blue-400' },
+  { id: '11', title: "What's a Food Web?", subject: 'Science', grade: 'Primary', duration: '03:22', youtubeVideoId: 'VutSmp_h6bY', colorCodeClass: 'bg-yellow-400' },
+  { id: '12', title: 'The Immune System Explained I – Bacteria Infection', subject: 'Science', grade: 'Secondary', duration: '08:44', youtubeVideoId: 'zQGOcOUBi6s', colorCodeClass: 'bg-blue-400' },
+  { id: '13', title: 'The Parts of a Sentence for Kids', subject: 'English', grade: 'Primary', duration: '04:15', youtubeVideoId: 'i_L5s_Rj1aQ', colorCodeClass: 'bg-yellow-400' },
+  { id: '14', title: 'How to recognize a dystopia - Alex Gendler', subject: 'English', grade: 'Secondary', duration: '05:37', youtubeVideoId: 'gSjLiQxEZlM', colorCodeClass: 'bg-blue-400' },
+  { id: '15', title: 'The Story of Thanksgiving', subject: 'History', grade: 'Primary', duration: '03:41', youtubeVideoId: 'Vlch_3-pg9s', colorCodeClass: 'bg-yellow-400' },
+  { id: '16', title: 'The Cold War: OverSimplified (Part 1)', subject: 'History', grade: 'Secondary', duration: '15:23', youtubeVideoId: 'I79wzbU2n2g', colorCodeClass: 'bg-blue-400' },
 ];
 
 const grades = ['All', 'Primary', 'Secondary'];
