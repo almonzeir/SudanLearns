@@ -35,8 +35,7 @@ export default function LiveClassCard() {
       </CardContent>
       <CardFooter className="ml-10 pb-6 pt-4">
         <Button asChild size="lg" className="bg-destructive hover:bg-destructive/90 text-destructive-foreground w-full sm:w-auto shadow-lg hover:scale-105 transition-transform">
-            {/* This would eventually link to the live class page */}
-            <Link href="#"> 
+            <Link href="https://meet.google.com/fwf-uryk-hbj?pli=1&authuser=1" target="_blank" rel="noopener noreferrer"> 
                 Join Now
             </Link>
         </Button>
